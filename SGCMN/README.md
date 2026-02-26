@@ -11,35 +11,6 @@ SG-CMN addresses the clinical challenge of missing MRI modalities during inferen
 3. **Edge Expert**: a pretrained lightweight network that extracts boundary information (τ) to guide the decoder.
 4. **SE-Attention Fusion**: fuses three modality features with channel attention.
 5. **Edge-Guided Decoder**: uses boundary attention for refined segmentation.
-6. **Quality Sentinel**: predicts segmentation quality (Dice) for failure detection.
-
-## Results
-
-### Dataset 1: Parotid Gland Segmentation (5-fold CV, 11 test cases)
-
-| Method       | Dice (%)       | HD95 (mm)     | ASSD (mm)     | Sensitivity | Precision |
-|:-------------|:--------------:|:-------------:|:-------------:|:-----------:|:---------:|
-| HVED         | 62.49 ± 13.65  | 8.55 ± 9.34   | 4.63 ± 5.61   | 0.733       | 0.675     |
-| HeMIS        | 63.54 ± 20.20  | 7.83 ± 9.83   | 4.98 ± 8.08   | 0.653       | 0.691     |
-| RFNet        | 69.81 ± 11.28  | 4.77 ± 5.52   | 2.19 ± 2.80   | 0.886       | 0.628     |
-| CKMD         | 73.11 ± 11.45  | 4.27 ± 6.92   | 3.09 ± 6.22   | 0.951       | 0.607     |
-| DC-Seg       | 75.29 ± 27.64  | 5.50 ± 10.48  | 3.67 ± 8.25   | 0.788       | 0.771     |
-| MGD-KD       | 83.33 ± 4.82   | 1.85 ± 0.76   | 0.77 ± 0.25   | **0.962**   | 0.744     |
-| **SG-CMN (Ours)** | **90.52 ± 4.24** | **1.39 ± 0.78** | **0.27 ± 0.14** | 0.927 | **0.887** |
-
-### Dataset 2: BraTS 2024 (Fixed split, 32 test cases, missing T1ce)
-
-| Method       | Dice (%)       | HD95 (mm)      | ASSD (mm)      | Sensitivity | Precision |
-|:-------------|:--------------:|:--------------:|:--------------:|:-----------:|:---------:|
-| HeMIS        | 84.62 ± 12.77  | 9.66 ± 12.69   | 2.03 ± 3.05    | 0.867       | 0.862     |
-| HVED         | 62.13 ± 17.61  | 23.11 ± 17.84  | 7.63 ± 7.65    | 0.565       | 0.829     |
-| RFNet        | 70.25 ± 15.74  | 17.58 ± 16.47  | 4.82 ± 5.50    | 0.704       | 0.812     |
-| M2FTrans     | 61.97 ± 18.59  | 22.41 ± 16.95  | 8.60 ± 8.55    | 0.569       | 0.857     |
-| MMCFormer    | 70.89 ± 17.98  | 15.99 ± 16.08  | 5.20 ± 6.76    | 0.741       | 0.769     |
-| MGD-KD       | 85.01 ± 11.14  | 8.70 ± 11.71   | 2.08 ± 2.87    | 0.873       | 0.866     |
-| CKMD         | 79.75 ± 14.88  | 11.15 ± 12.75  | 3.31 ± 5.08    | 0.840       | 0.808     |
-| DCSeg        | 86.40 ± 10.27  | 7.59 ± 11.36   | 1.67 ± 2.68    | 0.873       | 0.892     |
-| **SG-CMN (Ours)** | **89.45 ± 5.63** | **5.01 ± 5.78** | **1.10 ± 1.25** | **0.898** | **0.912** |
 
 ## Requirements
 
@@ -184,18 +155,6 @@ python3 evaluate.py \
 | Edge Expert       | Unfrozen    | Frozen      |
 | TTA (evaluation)  | 4-flip      | 4-flip      |
 | Post-processing   | LCC         | LCC         |
-
-## Model Parameters
-
-| Component           | Parameters |
-|:--------------------|:----------:|
-| Encoder (×3)        | 28.8M      |
-| Edge Expert         | 0.02M      |
-| Causal Predictor    | 5.0M       |
-| Fusion + SE         | 0.8M       |
-| Decoder             | 8.9M       |
-| Quality Sentinel    | 0.1M       |
-| **Total**           | **43.6M**  |
 
 ## Software & Hardware
 
