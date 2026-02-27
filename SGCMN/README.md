@@ -159,7 +159,7 @@ python3 evaluate.py \
 ## Software & Hardware
 
 - **Framework**: PyTorch 2.0+
-- **GPU**: NVIDIA A100 / RTX 3090 (8+ GB VRAM)
+- **GPU**: NVIDIA A6000 ada (48 GB VRAM)
 - **Training time**: ~2h per fold (Parotid), ~3h (BraTS) on single GPU
 - **Inference time**: ~1.5s per case (with 4-flip TTA)
 
